@@ -1,6 +1,6 @@
 
 import numpy as np
-from generator_model import Generator
+from encoder.generator_model import Generator
 import dnnlib.tflib as tflib
 
 def generate_child_face(father_latent_path, mother_latent_path, age, gender, influence, model_path, output_path):

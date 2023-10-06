@@ -25,7 +25,7 @@ def generate_final_image(latent_vector, generator):
     img = Image.fromarray(img_array, 'RGB')
     return img
 
-def generate_child_image(father_latent_path, mother_latent_path, age_input, gender_input, model_path='karras2019stylegan-ffhq-1024x1024.pkl'):
+def generate_child_image(father_latent_path, mother_latent_path, age_input, gender_input, influence_input, model_path,  final_image_path):
     tflib.init_tf()
     tf.compat.v1.disable_eager_execution()
     _G, _D, Gs = pickle.load(open(model_path, 'rb'))
@@ -47,12 +47,11 @@ def generate_child_image(father_latent_path, mother_latent_path, age_input, gend
         
     gender_intensity = 1 if gender_input == 'male' else -1
         
-    genes_influence = 0.5
+    genes_influence = influence_input
     final_latent = ((1 - genes_influence) * father_latent + genes_influence * mother_latent)
     final_latent[:8] += age_coeff * latent_directions['age'][:8]
     final_latent[:8] += gender_intensity * latent_directions['gender'][:8]
 
     final_image = generate_final_image(final_latent, generator)
-    final_image_path = 'generated_images/final_child.png'
     final_image.save(final_image_path)
     return final_image_path

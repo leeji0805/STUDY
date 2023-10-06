@@ -1,7 +1,7 @@
 
 import os
-from align_images_modified import align_images
-from encode_images_modified import encode_images
+from align_images import align_images
+from encode_images import encode_images
 
 def preprocess_images(input_images_dir, aligned_images_dir, generated_images_dir, latent_representations_dir, 
                       father_image_name, mother_image_name):
