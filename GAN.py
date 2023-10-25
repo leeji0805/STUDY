@@ -48,8 +48,8 @@ def main():
     model_path = 'D:/SSLHK/model/karras2019stylegan-ffhq-1024x1024.pkl'
     generator = initialize_generator(model_path)
     
-    father_latent_path = 'D:/SSLHK/latent_representations/BJ_01.npy'
-    mother_latent_path = 'D:/SSLHK/latent_representations/GY_01.npy'
+    father_latent_path = 'D:/SSLHK/latent_representations/mom_01.npy'
+    mother_latent_path = 'D:/SSLHK/latent_representations/dad_01.npy'
     
     father_latent = np.load(father_latent_path)
     mother_latent = np.load(mother_latent_path)

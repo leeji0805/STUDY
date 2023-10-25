@@ -20,13 +20,13 @@ subprocess.run(["D:/SSLHK/GAN/Scripts/python.exe", "D:/SSLHK/encode_images.py", 
 
 # father.npy와 mother.npy 파일의 존재 확인
 
-father_image_name = "D:/SSLHK/testpoto/BJ.jpg"  # 아버지 이미지 파일 이름
-mother_image_name = "D:/SSLHK/testpoto/BJ.jpg"  # 어머니 이미지 파일 이름
+father_image_name = "D:/SSLHK/testpoto/dad.jpg"  # 아버지 이미지 파일 이름
+mother_image_name = "D:/SSLHK/testpoto/mom.jpg"  # 어머니 이미지 파일 이름
 
 # father_latent_path = os.path.join(latent_representations_dir, f"father.npy")
-father_latent_path = os.path.join(latent_representations_dir, f"father_01.npy")
+father_latent_path = os.path.join(latent_representations_dir, f"dad_01.npy")
 # mother_latent_path = os.path.join(latent_representations_dir, f"mother.npy")
-mother_latent_path = os.path.join(latent_representations_dir, f"GY_01.npy")
+mother_latent_path = os.path.join(latent_representations_dir, f"mom_01.npy")
 
 # 생성된 latent representation 파일의 존재 확인
 if os.path.exists(father_latent_path) and os.path.exists(mother_latent_path):

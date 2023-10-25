@@ -124,7 +124,7 @@ def main():
     if (args.dlatent_avg != ''):
         generator.set_dlatent_avg(np.load(args.dlatent_avg))
    
-    perc_model_path ="D:\SSLHK\vgg16_zhang_perceptual.pkl"
+    perc_model_path ="D:\SSLHK/vgg16_zhang_perceptual.pkl"
    
     # perc_model = None
     if (args.use_lpips_loss > 0.00000001):
