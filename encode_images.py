@@ -13,6 +13,8 @@ from encoder.perceptual_model import PerceptualModel, load_images
 import tensorflow as tf
 from keras.models import load_model
 from keras.applications.resnet50 import preprocess_input
+import sys
+
 
 def split_to_batches(l, n):
     for i in range(0, len(l), n):
@@ -28,7 +30,7 @@ def str2bool(v):
     else:
         raise argparse.ArgumentTypeError('Boolean value expected.')
     
-model_path = "model\karras2019stylegan-ffhq-1024x1024.pkl"
+model_path = "D:\SSLHK\model\karras2019stylegan-ffhq-1024x1024.pkl"
 def main():
     parser = argparse.ArgumentParser(description='Find latent representation of reference images using perceptual losses', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('src_dir', help='Directory with images for encoding')
@@ -99,8 +101,7 @@ def main():
     if args.output_video:
       import cv2
       synthesis_kwargs = dict(output_transform=dict(func=tflib.convert_images_to_uint8, nchw_to_nhwc=False), minibatch_size=args.batch_size)
-    print("Checking directory:", args.src_dir)
-    print(os.listdir(args.src_dir))
+
     ref_images = [os.path.join(args.src_dir, x) for x in os.listdir(args.src_dir)]
     ref_images = list(filter(os.path.isfile, ref_images))
 
@@ -123,7 +124,7 @@ def main():
     if (args.dlatent_avg != ''):
         generator.set_dlatent_avg(np.load(args.dlatent_avg))
    
-    perc_model_path ="vgg16_zhang_perceptual.pkl"
+    perc_model_path ="D:\SSLHK\vgg16_zhang_perceptual.pkl"
    
     # perc_model = None
     if (args.use_lpips_loss > 0.00000001):

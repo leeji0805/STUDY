@@ -7,7 +7,7 @@ def preprocess_and_encode(input_images_dir, aligned_images_dir, generated_images
     for dir_path in [aligned_images_dir, generated_images_dir, latent_representations_dir]:
         if not os.path.exists(dir_path):
             os.makedirs(dir_path)
-    python_path = 'd:\\SSLHK\\GAN\\Scripts\\python.exe'        
+    python_path = 'd:/SSLHK/GAN/Scripts/python.exe'        
     # Align images
     subprocess.run([python_path, "align_images.py", input_images_dir, aligned_images_dir])
 

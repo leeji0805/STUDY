@@ -15,7 +15,7 @@ import keras.backend as K
 import traceback
 import dnnlib.tflib as tflib
 import sys
-sys.path.append('/home/jihyeon/SSLHK')
+sys.path.append('D:/SSLHK')
 
 def load_images(images_list, image_size=256, sharpen=False):
     loaded_images = list()
@@ -113,7 +113,7 @@ class PerceptualModel:
         if self.face_mask:
             import dlib
             self.detector = dlib.get_frontal_face_detector()
-            landmarks_model_path = unpack_bz2('/home/jihyeon/SSLHK/shape_predictor_68_face_landmarks.dat.bz2')
+            landmarks_model_path = unpack_bz2('D:/SSLHK/shape_predictor_68_face_landmarks.dat.bz2')
             self.predictor = dlib.shape_predictor(landmarks_model_path)
 
     def add_placeholder(self, var_name):
@@ -148,7 +148,7 @@ class PerceptualModel:
         self.add_placeholder("ref_weight")
 
         if (self.vgg_loss is not None):
-            vgg16 = VGG16(include_top=False, weights='/home/jihyeon/SSLHK/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5', input_shape=(self.img_size, self.img_size, 3)) # https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
+            vgg16 = VGG16(include_top=False, weights='D:/SSLHK/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5', input_shape=(self.img_size, self.img_size, 3)) # https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
             self.perceptual_model = Model(vgg16.input, vgg16.layers[self.layer].output)
             generated_img_features = self.perceptual_model(preprocess_input(self.ref_weight * generated_image))
             self.ref_img_features = tf.get_variable('ref_img_features', shape=generated_img_features.shape,
