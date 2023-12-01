@@ -31,5 +31,5 @@ mother_latent_path = os.path.join(latent_representations_dir, f"mom_01.npy")
 # 생성된 latent representation 파일의 존재 확인
 if os.path.exists(father_latent_path) and os.path.exists(mother_latent_path):
     print(f"Latent representations have been successfully created:/{father_latent_path}/{mother_latent_path}")
-else:
+else: 
     print("Error: Unable to find the latent representation files. Please check the paths and try again.")
